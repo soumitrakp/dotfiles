@@ -37,6 +37,9 @@ Plug 'tpope/vim-rails'
 Plug 'slim-template/vim-slim'
 Plug 'vim-ruby/vim-ruby'
 
+
+"Plug 'https://github.com/snakemake/snakemake.git', {'rtp': 'misc/vim/'}
+
 call plug#end()
 
 " fzf (fuzzy file finder)
