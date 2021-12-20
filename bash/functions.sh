@@ -104,9 +104,9 @@ complete -F _tmux_complete_session tat
 
 
 function gvim () {
-  command gvim --servername NCBILINUXGUI --remote-tab-silent "$@" || command gvim "$@";
+  command gvim --servername LINUXGUI --remote-tab-silent "$@" || command gvim "$@";
 }
 
 function vim () {
-  command vim --servername a=${TMUX:-NCBILINUXTERM} --remote-tab-silent "$@" || command vim "$@";
+  command vimx --servername a=${TMUX:-LINUXTERM} --remote-tab-silent "$@" || command vimx "$@";
 }

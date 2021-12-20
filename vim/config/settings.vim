@@ -34,7 +34,6 @@ set shortmess-=S                      " Show result counts like '[1/4]'. Vim 8.1
 
 set ruler                             " Show line and column number at bottom of window
 
-set spell
 set wrapscan
 set linebreak
 set fileformat=unix
@@ -99,6 +98,9 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 au BufNewFile,BufRead Snakefile set syntax=snakemake
 au BufNewFile,BufRead *.snake set syntax=snakemake
 au BufNewFile,BufRead *.smk set syntax=snakemake
+
+"Set spell for non-code files
+autocmd BufRead,BufNewFile *.md,*.tex,*.txt setlocal spell
 
 set exrc   " Enable per-directory .vimrc files.
 set secure " Disable unsafe commands in per-directory .vimrc files.
