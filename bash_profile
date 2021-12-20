@@ -15,14 +15,15 @@ source ~/.bash/completion.sh
 source ~/.bash/aliases.sh
 source ~/.bash/functions.sh
 source ~/.bash/prompt.sh
+source ~/.bash/options.sh
 
-if [[ "$DEVBOX" ]]; then
-  # Auctionet's "Devbox" tool is quite coupled to RVM currently.
-  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-else
-  # For the "asdf" extendable version manager (https://github.com/asdf-vm/asdf).
-  . $(brew --prefix asdf)/asdf.sh
-fi
+#if [[ "$DEVBOX" ]]; then
+#  # Auctionet's "Devbox" tool is quite coupled to RVM currently.
+#  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+#else
+#  # For the "asdf" extendable version manager (https://github.com/asdf-vm/asdf).
+#  . $(brew --prefix asdf)/asdf.sh
+#fi
 
 export WMSJAVA_HOME="/Library/WowzaStreamingEngine-4.7.0/java"
 

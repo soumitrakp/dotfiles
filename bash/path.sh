@@ -10,6 +10,9 @@ export PATH=/var/lib/gems/1.8/bin:$PATH
 # MySQL
 export PATH=/usr/local/mysql/bin:$PATH
 
+# finally
+export PATH=.:~/.local/bin:/usr/local/vim/8.2-static-python3/bin:$PATH
+
 # Make autojump's "j" available.
 # brew install autojump
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh

@@ -101,3 +101,12 @@ function _tmux_complete_session() {
   COMPREPLY=( ${COMPREPLY[@]:-} $(compgen -W "$(tmux -q list-sessions | cut -f 1 -d ':')" -- "${cur}") )
 }
 complete -F _tmux_complete_session tat
+
+
+function gvim () {
+  command gvim --servername NCBILINUXGUI --remote-tab-silent "$@" || command gvim "$@";
+}
+
+function vim () {
+  command vim --servername a=${TMUX:-NCBILINUXTERM} --remote-tab-silent "$@" || command vim "$@";
+}

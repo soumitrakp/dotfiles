@@ -62,10 +62,12 @@ alias gw^="git show HEAD^"
 alias gw^^="git show HEAD^^"
 alias gw^^^="git show HEAD^^^"
 alias gw^^^^="git show HEAD^^^^"
-alias gd="git diff HEAD"  # What's changed? Both staged and unstaged.
+alias gdf="git diff HEAD"  # What's changed? Both staged and unstaged.
 alias gdo="git diff --cached"  # What's changed? Only staged (added) changes.
 # for gco ("git commit only") and gca ("git commit all"), see functions.sh.
 # for gget (git clone and cd), see functions.sh.
+alias gd='git difftool 2>/dev/null'
+alias gss='git status -s --ignored'
 alias gcaf="git add --all && gcof"
 alias gcof="git commit --no-verify -m"
 alias gcac="gca Cleanup"
@@ -125,3 +127,9 @@ alias fixcam="sudo killall VDCAssistant"
 
 # Sometimes the time in my VM is off. This fixes it.
 alias fixtime="sudo service ntp stop; sudo ntpd -gq; sudo service ntp start"
+
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+alias gt='/usr/bin/dbus-launch /usr/bin/gnome-terminal &'
+
