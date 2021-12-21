@@ -41,7 +41,8 @@ bash_prompt() {
   # reset
   local RESET="\[\033[0;37m\]"
 
-  PS1="\t $BY\$(__name_and_server)$Y\W $G\$(__git_prompt)$RESET$ "
+  #PS1="\t $BY\$(__name_and_server)$Y\W $G\$(__git_prompt)$RESET$ "
+  PS1="$BY\$(__name_and_server)$G\W$RESET$ "
 
 }
 

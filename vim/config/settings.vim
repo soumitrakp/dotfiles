@@ -92,7 +92,7 @@ au BufLeave,FocusLost * silent! wa
 au BufRead,BufNewFile *.njk setfiletype html
 
 "Flagging Unnecessary Whitespace
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 "For snakefiles used by Snakemake
 au BufNewFile,BufRead Snakefile set syntax=snakemake

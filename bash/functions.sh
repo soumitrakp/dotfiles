@@ -107,6 +107,12 @@ function gvim () {
   command gvim --servername LINUXGUI --remote-tab-silent "$@" || command gvim "$@";
 }
 
+
 function vim () {
-  command vimx --servername a=${TMUX:-LINUXTERM} --remote-tab-silent "$@" || command vimx "$@";
+  # avoid recursion by using command
+  HAS_CLIENT_SERVER=$(command vim --version | grep -c '+clientserver');
+  VIM_CMD=$(if [ $HAS_CLIENT_SERVER ]; then echo "vim"; else echo "vimx"; fi);
+  # VIM servernames are always capital, bash variable^^ capitalizes
+  command ${VIM_CMD} --servername ${TMUX^^:-LINUXTERM} --remote-tab-silent "$@" || command ${VIM_CMD} "$@";
 }
+
