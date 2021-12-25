@@ -25,7 +25,11 @@ Plug 'tpope/vim-repeat'             " Lets you use '.' to repeat vim-surround co
 Plug 'tpope/vim-surround'           " Change, add or remove surrounding characters like quotes or brackets.
 Plug 'vim-scripts/argtextobj.vim'   " Argument text objects, like daa to delete a function argument.
 Plug 'ap/vim-css-color'             " Color name highlighter.
-Plug 'neoclide/coc.nvim', {'branch': 'release'}  " Supports VSCode features, language servers etc.
+if empty($BIOWULF)
+Plug 'neoclide/coc.nvim', {'branch': 'devel'}  " Supports VSCode features, language servers etc.
+"Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+endif
+
 
 " Languages/frameworks.
 Plug 'elixir-editors/vim-elixir'

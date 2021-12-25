@@ -24,8 +24,13 @@ set shortmess+=c
 if has("nvim-0.5.0") || has("patch-8.1.1564")
   " Recently vim can merge signcolumn and number column into one
   set signcolumn=number
-else
+elseif exists('&signcolumn')
   set signcolumn=yes
+elseif has("sign")
+  autocmd BufEnter * sign define dummy
+  autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
+else
+  "no sign
 endif
 
 " Use tab for trigger completion with characters ahead and navigate.

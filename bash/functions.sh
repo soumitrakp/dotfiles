@@ -111,8 +111,16 @@ function gvim () {
 function vim () {
   # avoid recursion by using command
   HAS_CLIENT_SERVER=$(command vim --version | grep -c '+clientserver');
-  VIM_CMD=$(if [ $HAS_CLIENT_SERVER ]; then echo "vim"; else echo "vimx"; fi);
+  #echo $HAS_CLIENT_SERVER
+  VIM_CMD=$(if [ $HAS_CLIENT_SERVER == 1 ]; then echo "vim"; else echo "vimx"; fi);
+  #echo $VIM_CMD
+  VIMSERVERNAME=${TMUX:-LINUXTERM}
+  #echo $VIMSERVERNAME
   # VIM servernames are always capital, bash variable^^ capitalizes
-  command ${VIM_CMD} --servername ${TMUX^^:-LINUXTERM} --remote-tab-silent "$@" || command ${VIM_CMD} "$@";
+  command ${VIM_CMD} --servername ${VIMSERVERNAME^^} --remote-tab-silent "$@" || command ${VIM_CMD} "$@";
 }
 
+# update shell environment variable upon reattach
+tmuxenv() {
+  eval $(tmux show-environment | sed -e ‘/^-/d’ -e “s/’/’\\\\”/g” -e “s/=\(.*\)/=’\\1’/”)
+}

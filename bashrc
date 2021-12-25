@@ -1,3 +1,5 @@
+export BIOWULF="YES"
+
 [[ -s ~/.profile ]] && source ~/.profile
 
 # Work environment: https://github.com/barsoom/bs
@@ -26,6 +28,9 @@ source ~/.bash/options.sh
 #fi
 
 export WMSJAVA_HOME="/Library/WowzaStreamingEngine-4.7.0/java"
+
+# coc plugin in vim will need nodejs
+module load nodejs > /dev/null 2>&1
 
 # Stop macOS from saying zsh is the new default.
 export BASH_SILENCE_DEPRECATION_WARNING=1
