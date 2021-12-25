@@ -111,11 +111,11 @@ function gvim () {
 function vim () {
   # avoid recursion by using command
   HAS_CLIENT_SERVER=$(command vim --version | grep -c '+clientserver');
-  #echo $HAS_CLIENT_SERVER
+  echo $HAS_CLIENT_SERVER
   VIM_CMD=$(if [ $HAS_CLIENT_SERVER == 1 ]; then echo "vim"; else echo "vimx"; fi);
-  #echo $VIM_CMD
+  echo $VIM_CMD
   VIMSERVERNAME=${TMUX:-LINUXTERM}
-  #echo $VIMSERVERNAME
+  echo $VIMSERVERNAME
   # VIM servernames are always capital, bash variable^^ capitalizes
   command ${VIM_CMD} --servername ${VIMSERVERNAME^^} --remote-tab-silent "$@" || command ${VIM_CMD} "$@";
 }

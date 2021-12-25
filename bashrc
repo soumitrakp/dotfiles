@@ -1,4 +1,3 @@
-export BIOWULF="YES"
 
 [[ -s ~/.profile ]] && source ~/.profile
 
