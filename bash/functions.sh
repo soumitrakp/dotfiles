@@ -104,7 +104,10 @@ complete -F _tmux_complete_session tat
 
 
 function gvim () {
-  command gvim --servername LINUXGUI --remote-tab-silent "$@" || command gvim "$@";
+  VIMSERVER=${SERVER_GROUP:-LOCAL}.X
+  command gvim --servername ${VIMSERVER^^} \
+                --remote-tab-silent "$@" || 
+  command gvim "$@";
 }
 
 
@@ -112,15 +115,33 @@ function vim () {
   # avoid recursion by using command
   HAS_CLIENT_SERVER=$(command vim --version | grep -c '+clientserver');
   #echo $HAS_CLIENT_SERVER
-  VIM_CMD=$(if [ $HAS_CLIENT_SERVER == 1 ]; then echo "vim"; else echo "vimx"; fi);
+  VIM_CMD=$(
+   if [ $HAS_CLIENT_SERVER == 1 ]; then
+      echo "vim";
+    else 
+      echo "vimx";
+    fi
+  );
   #echo $VIM_CMD
-  VIMSERVERNAME=${TMUX:-LINUXTERM}
-  #echo $VIMSERVERNAME
+  SERVER_GROUP=${SERVER_GROUP:-LOCAL}
+  HOST_NAME=$(hostname -s)
+  if [[ $SERVER_GROUP == "biowulf" ]] &&
+     [[ $HOST_NAME == cn* ]]; then
+    $HOST_NAME = "biowulf";
+  fi;
+  TMUX_WINDOW=${TMUX##*,}
+  VIMSERVER="${HOST_NAME}.${TMUX_WINDOW}"
+  echo $VIMSERVER
   # VIM servernames are always capital, bash variable^^ capitalizes
-  command ${VIM_CMD} --servername ${VIMSERVERNAME^^} --remote-tab-silent "$@" || command ${VIM_CMD} "$@";
+  command ${VIM_CMD} --servername ${VIMSERVER^^} \
+                      --remote-tab-silent "$@" ||
+  command ${VIM_CMD} "$@";
 }
 
 # update shell environment variable upon reattach
 tmuxenv() {
-  eval $(tmux show-environment | sed -e ‘/^-/d’ -e “s/’/’\\\\”/g” -e “s/=\(.*\)/=’\\1’/”)
+  eval $(tmux show-environment |
+    sed -e '/^-/d' -e "s/'/\\\\'/g" \
+         -e "s/=\(.*\)/='\\1'/"
+  )
 }
