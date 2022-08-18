@@ -28,6 +28,8 @@ elif ls -G -d . >/dev/null 2>&1; then
   alias ls='ls -G'  # BSD/OS X
 fi
 
+alias vd='meld > /dev/null 2>&1'
+
 # Ruby on Rails
 alias sx="[ -f script/console ] && script/console --sandbox || bundle exec rails console --sandbox"
 alias sdb="[ -f script/dbconsole ] && script/console --include-password || bundle exec rails dbconsole --include-password"
