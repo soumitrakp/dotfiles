@@ -122,5 +122,8 @@ function vim () {
 
 # update shell environment variable upon reattach
 tmuxenv() {
-  eval $(tmux show-environment | sed -e ‘/^-/d’ -e “s/’/’\\\\”/g” -e “s/=\(.*\)/=’\\1’/”)
+  eval $(tmux show-environment |
+    sed -e '/^-/d' -e "s/'/\\\\'/g" \
+         -e "s/=\(.*\)/='\\1'/"
+  )
 }

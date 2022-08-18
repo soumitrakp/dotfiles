@@ -31,6 +31,9 @@ export WMSJAVA_HOME="/Library/WowzaStreamingEngine-4.7.0/java"
 # coc plugin in vim will need nodejs
 module load nodejs > /dev/null 2>&1
 
+# monocle3 R packagae needs these dependencies
+module load gdal geos proj > /dev/null 2>&1
+
 # Stop macOS from saying zsh is the new default.
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
